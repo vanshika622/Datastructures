@@ -58,7 +58,7 @@ Node* deletingTail(Node* &head){
         
     }
     else if(head->next==NULL){
-        free(head);
+        delete(head);
         head=NULL;
     }
     else{
@@ -69,7 +69,7 @@ Node* deletingTail(Node* &head){
         temp=temp->next;
     }
     temp2->next=NULL;
-    free(temp);
+    delete(temp);
     temp=NULL;
     }
     return head;
@@ -83,7 +83,7 @@ Node* deletingAtparticularpos(Node* &head,int pos){
        }
        else if(pos==1){
            head=current->next;
-           free(current);
+           delete(current);
            current=NULL;
        }
        else{
@@ -93,7 +93,7 @@ Node* deletingAtparticularpos(Node* &head,int pos){
                pos--;
            }
            previous->next=current->next;
-           free(current);
+           delete(current);
            current=NULL;
        }
        return head;

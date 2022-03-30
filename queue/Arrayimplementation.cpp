@@ -12,37 +12,56 @@ class queue{
        back=-1;
 
       }
+      bool isEmpty(){
+         if(front==-1 || back==-1){
+             return true;
+            }
+            return false;
+     }
+     bool isFull(){
+     	if(back==n-1){
+     		return true;
+		 }else{
+		 	return false;
+		 }
+	 }
       void enqueue(int x){
           if(back==n-1){
               cout<<"Queue oveflow"<<endl;
               return;
           }
-          back++;
-          arr[back]=x;
-          if(front==-1){
-              front++;
-          }
+          else if(isEmpty()){
+          	back=0;
+          	front =0;
+          	arr[back]=x;
+		  }else{
+		  	back++;
+		  	arr[back]=x;
+		  }
       }
       void dequeue(){
-          if(front==-1 || front>back){
+          if(isEmpty()){
               cout<<"No elements in queue"<<endl;
               return;
           }
-          front++;
+          else if(front==back){
+          	 front=-1;
+          	 back=-1;
+		  }
+		  else{
+		  	front++;
+		  }
+		  
+          
       }
       int peek(){
-            if(front==-1 || front>back){
+            if(front==-1 || back==-1){
               cout<<"No elements in queue"<<endl;
               return -1;
             }
              return arr[front];
       }
-     bool empty(){
-         if(front==-1 || front>back){
-             return true;
-            }
-            return false;
-     }
+     
 };
 int main(){
      queue q;
